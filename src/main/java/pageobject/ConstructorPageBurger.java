@@ -1,4 +1,4 @@
-package pageObject;
+package pageobject;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -6,17 +6,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class ConstructorPageBurger {
     private WebDriver driver;
-
     private By constructor = By.xpath(".//header[@class='AppHeader_header__X9aJA pb-4 pt-4']//li[1]/a");
     private By logo = By.xpath(".//header[@class='AppHeader_header__X9aJA pb-4 pt-4']//div/a");
-
     private By bun = By.xpath(".//div[@style='display: flex;']/div[1]");
     private By sauce = By.xpath(".//div[@style='display: flex;']/div[2]");
     private By filling = By.xpath(".//div[@style='display: flex;']/div[3]");
-
     private By success = By.xpath(".//div[@style='display: flex;']/div[1]/span");
     private By section = By.cssSelector(".tab_tab__1SPyG.tab_tab_type_current__2BEPc .text");
 
@@ -35,13 +33,14 @@ public class ConstructorPageBurger {
     }
 
     @Step("Massage for success contractor")
-    public String getTextForSuccessfulGoConstructor(){
+    public String getTextForSuccessfulGoConstructor() {
         return new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(driver -> driver.findElement(success)).getText();
     }
 
     @Step("Go from constructor to the bun")
     public void goActiveBun() {
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.findElement(sauce).click();
         driver.findElement(bun).click();
     }
@@ -57,7 +56,7 @@ public class ConstructorPageBurger {
     }
 
     @Step("Massage for success section bun or sauce or filling")
-    public String getTextForSuccessfulGoSection(){
+    public String getTextForSuccessfulGoSection() {
         return new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(driver -> driver.findElement(section)).getText();
     }

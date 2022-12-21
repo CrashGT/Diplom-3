@@ -1,4 +1,4 @@
-package pageObject;
+package pageobject;
 
 import com.github.javafaker.Faker;
 
@@ -10,4 +10,3 @@ public class RandomInfo {
     public static final String RANDOM_EMAIL = faker.name().firstName() + faker.numerify("###") + "@mail.ru";
     public static final String RANDOM_PASSWORD = faker.numerify("#######");
 }
-
